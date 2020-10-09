@@ -17,7 +17,7 @@ module.exports = function (options) {
       server: {
         baseDir: `../${global.folder.build}`,
         // If index.html exist - open it, else show folder
-        directory: !fs.existsSync(`../${global.folder.build}/${global.file.mainHtml}`),
+        directory: !fs.existsSync(`../${global.folder.build}/${global.file.html.main}`),
       },
       snippetOptions: {
         // Provide a custom Regex for inserting the snippet

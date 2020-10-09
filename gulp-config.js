@@ -1,4 +1,4 @@
-module.exports = {
+const global = {
   task: {
     lintHtml: 'lint-html',
     lintJs: 'lint-js',
@@ -20,14 +20,18 @@ module.exports = {
     build: 'public',
   },
   file: {
-    mainHtml: 'index.html',
-    mainJs: 'app.js',
-    buildJs: 'jquery.main.js',
-    vendorJs: 'vendor.js',
-    mainStylesSrc: 'styles.scss',
-    mainStyles: 'styles.css',
-    vendorStylesSrc: 'vendor.scss',
-    vendorStyles: 'vendor.css',
+    html: {
+      main: 'index.html',
+    },
+    js: {
+      main: 'app',
+      build: 'jquery.main',
+      vendor: 'vendor',
+    },
+    styles: {
+      main: 'styles',
+      vendor: 'vendor',
+    },
   },
   buildHtml: {
     templates: 'html/templates',
@@ -35,10 +39,18 @@ module.exports = {
   buildStyles: {
     // Sorting type css media queries: 'desktop-first' || 'mobile-first'
     sortType: 'desktop-first',
+    custom: {
+      isSortMedia: false,
+    },
   },
   buildJs: {
     externalLibs: {
       jquery: 'jQuery',
+    },
+    getEntryPoints() {
+      return {
+        [global.file.js.build]: `./js/${global.file.js.main}`,
+      };
     },
   },
   error: {
@@ -47,12 +59,6 @@ module.exports = {
     icon: './system_files/icons/error_icon.png',
     wait: true,
   },
-  getFilesForStylesCustom() {
-    return {
-      files: [],
-      isGcmq: false,
-    };
-  },
   isProduction() {
     return process.argv[process.argv.length - 1] === this.task.build;
   },
@@ -60,3 +66,5 @@ module.exports = {
     return process.argv[process.argv.length - 1] === this.task.fixJs;
   }
 };
+
+module.exports = global;

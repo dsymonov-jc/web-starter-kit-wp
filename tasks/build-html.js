@@ -15,10 +15,10 @@ module.exports = function () {
     basepath: `./${global.buildHtml.templates}`,
     indent: true,
     context: {
-      publicJs: global.file.buildJs,
-      vendorJs: global.file.vendorJs,
-      mainStyles: global.file.mainStyles,
-      vendorStyles: global.file.vendorStyles,
+      publicJs: global.file.js.build,
+      vendorJs: global.file.js.vendor,
+      mainStyles: global.file.styles.main,
+      vendorStyles: global.file.styles.vendor,
     },
   };
 

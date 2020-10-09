@@ -16,10 +16,10 @@ module.exports = function () {
     try {
       const config = {
         mode: 'none',
-        entry: `./js/${global.file.mainJs}`,
+        entry: global.buildJs.getEntryPoints(),
         output: {
           path: path.resolve(`../${global.folder.build}`, `js/`),
-          filename: global.file.buildJs,
+          filename: '[name].js',
         },
         optimization: {
           splitChunks: {
@@ -29,7 +29,7 @@ module.exports = function () {
             cacheGroups: {
               vendor: {
                 test: /[\\/](node_modules|vendor_entries)[\\/]/,
-                filename: global.file.vendorJs,
+                filename: `${global.file.js.vendor}.js`,
               },
             },
           },
@@ -53,7 +53,7 @@ module.exports = function () {
         if (error) {
           throw new Error(error);
         }
-        
+
         if (production) {
           console.log(
             stats.toString({
