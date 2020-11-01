@@ -34,7 +34,7 @@ const global = {
     },
   },
   buildHtml: {
-    templates: 'html/templates',
+    templates: 'html',
   },
   buildStyles: {
     // Sorting type css media queries: 'desktop-first' || 'mobile-first'
