@@ -10,7 +10,7 @@ const global = require('../gulp-config.js');
 module.exports = function (options) {
 
   return () => {
-    gulp.watch(`./html/**/*.html`, gulp.series(global.task.buildHtml, global.task.lintHtml));
+    gulp.watch(`./html/**/*.njk`, gulp.series(global.task.buildHtml, global.task.lintHtml));
 
     gulp.watch([`./scss/**/*.scss`, `!./scss/custom/**/*.scss`], gulp.series(global.task.buildStyles));
 

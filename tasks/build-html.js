@@ -12,7 +12,7 @@ const global = require('../gulp-config.js');
 module.exports = function () {
 
   return (done) => {
-    return gulp.src(`./${global.buildHtml.templates}/*.html`)
+    return gulp.src(`./${global.buildHtml.templates}/*.njk`)
       .pipe(nunjucks.compile())
       .on('error', (error) => notifier.error(error.message, 'HTML compiling error', done))
       .pipe(gulp.dest(`../${global.folder.build}`));
