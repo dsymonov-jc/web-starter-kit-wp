@@ -1,7 +1,6 @@
 /**
  * Build styles for application from SASS
  */
-'use strict';
 
 const gulp = require('gulp');
 const sass = require('gulp-sass');
@@ -21,14 +20,12 @@ module.exports = function () {
   ];
 
   if (production) {
-    plugins.push(sortMedia({ sort: global.buildStyles.sortType, }));
+    plugins.push(sortMedia({ sort: global.buildStyles.sortType }));
   }
 
-  return (done) => {
-    return gulp.src(`./scss/*.scss`, { sourcemaps: !production })
-      .pipe(sass.sync({ sourceMap: !production, }))
-      .on('error', (error) => notifier.error(error.message, 'Main Sass compiling error', done))
-      .pipe(postcss(plugins))
-      .pipe(gulp.dest(`../${global.folder.build}/css`, { sourcemaps: './' }));
-  };
+  return (done) => gulp.src('./scss/*.scss', { sourcemaps: !production })
+    .pipe(sass.sync({ sourceMap: !production }))
+    .on('error', (error) => notifier.error(error.message, 'Main Sass compiling error', done))
+    .pipe(postcss(plugins))
+    .pipe(gulp.dest(`../${global.folder.build}/css`, { sourcemaps: './' }));
 };

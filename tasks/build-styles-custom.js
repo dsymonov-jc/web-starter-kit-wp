@@ -1,7 +1,6 @@
 /**
  * Build custom styles files listed in the config, without sourcemaps & Gcmq
  */
-'use strict';
 
 const gulp = require('gulp');
 const sass = require('gulp-sass');
@@ -22,14 +21,12 @@ module.exports = function () {
   ];
 
   if (isSortMedia) {
-    plugins.push(sortMedia({ sort: global.buildStyles.sortType, }));
+    plugins.push(sortMedia({ sort: global.buildStyles.sortType }));
   }
 
-  return (done) => {
-    return gulp.src(`./scss/custom/*.scss`, { sourcemaps: !production })
-      .pipe(sass.sync({ sourceMap: !production, }))
-      .on('error', (error) => notifier.error(error.message, 'Custom Sass compiling error', done))
-      .pipe(postcss(plugins))
-      .pipe(gulp.dest(`../${global.folder.build}/css`, { sourcemaps: './' }));
-  };
+  return (done) => gulp.src('./scss/custom/*.scss', { sourcemaps: !production })
+    .pipe(sass.sync({ sourceMap: !production }))
+    .on('error', (error) => notifier.error(error.message, 'Custom Sass compiling error', done))
+    .pipe(postcss(plugins))
+    .pipe(gulp.dest(`../${global.folder.build}/css`, { sourcemaps: './' }));
 };

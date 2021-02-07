@@ -1,7 +1,6 @@
 /**
  * Build js
  */
-'use strict';
 
 const webpack = require('webpack');
 const path = require('path');
@@ -18,7 +17,7 @@ module.exports = function () {
         mode: 'none',
         entry: global.buildJs.getEntryPoints(),
         output: {
-          path: path.resolve(`../${global.folder.build}`, `js/`),
+          path: path.resolve(`../${global.folder.build}`, 'js/'),
           filename: '[name].js',
         },
         target: 'browserslist',
@@ -43,9 +42,9 @@ module.exports = function () {
               exclude: /(node_modules)/,
               use: {
                 loader: 'babel-loader',
-              }
-            }
-          ]
+              },
+            },
+          ],
         },
         externals: global.buildJs.externalLibs,
       };
@@ -62,7 +61,7 @@ module.exports = function () {
               hash: false,
               chunks: false,
               colors: true,
-            })
+            }),
           );
         }
 

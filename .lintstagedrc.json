@@ -1,0 +1,4 @@
+{
+  "**/*.{md, json, html}": ["npx prettier --write --ignore-unknown"],
+  "**/*.js": ["npx prettier --write --ignore-unknown", "npx eslint --fix"]
+}

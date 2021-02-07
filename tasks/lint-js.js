@@ -1,9 +1,8 @@
 /**
  * Lint ES
  */
-'use strict';
 
-const ESLint = require('eslint').ESLint;
+const { ESLint } = require('eslint');
 
 const global = require('../gulp-config.js');
 

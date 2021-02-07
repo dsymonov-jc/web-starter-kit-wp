@@ -1,7 +1,6 @@
 /**
  * Clean build folder
  */
-'use strict';
 
 const del = require('del');
 

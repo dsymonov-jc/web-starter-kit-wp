@@ -1,7 +1,6 @@
 /**
  * Hint HTML
  */
-'use strict';
 
 const gulp = require('gulp');
 const htmlhint = require('gulp-htmlhint');
@@ -10,7 +9,6 @@ const notifier = require('../helpers/notifier');
 const global = require('../gulp-config.js');
 
 module.exports = function () {
-
   return (done) => {
     gulp.src(`../${global.folder.build}/**/*.html`)
       .pipe(htmlhint({
