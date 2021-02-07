@@ -21,6 +21,7 @@ module.exports = function () {
           path: path.resolve(`../${global.folder.build}`, `js/`),
           filename: '[name].js',
         },
+        target: 'browserslist',
         optimization: {
           splitChunks: {
             chunks: 'all',
