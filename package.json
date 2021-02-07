@@ -71,7 +71,6 @@
   "scripts": {
     "postinstall": "npx gulp load-env",
     "format": "npx prettier . --write --ignore-unknown",
-    "pre-commit": "npx lint-staged -r",
     "dev": "npx gulp",
     "test": "npx gulp build --log-level -LLLL",
     "build": "cross-env NODE_ENV=production npx gulp build",
