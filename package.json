@@ -73,10 +73,10 @@
     "format": "npx prettier . --write --ignore-unknown",
     "dev": "npx gulp",
     "test": "npx gulp build --log-level -LLLL",
-    "build": "cross-env NODE_ENV=production npx gulp build",
+    "build": "npx cross-env NODE_ENV=production npx gulp build",
     "lint-html": "npx gulp lint-html",
     "lint-js": "npx gulp lint-js",
-    "fix-js": "cross-env LINT_MODE=fix npx gulp lint-js"
+    "fix-js": "npx cross-env LINT_MODE=fix npx gulp lint-js"
   },
   "dependencies": {
     "normalize.css": "8.0.1"
