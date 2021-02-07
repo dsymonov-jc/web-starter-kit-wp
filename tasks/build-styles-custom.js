@@ -2,6 +2,7 @@
  * Build custom styles files listed in the config, without sourcemaps & Gcmq
  */
 
+const env = require('../helpers/env');
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const postcss = require('gulp-postcss');
@@ -11,6 +12,7 @@ const sortMedia = require('postcss-sort-media-queries');
 const notifier = require('../helpers/notifier');
 const global = require('../gulp-config.js');
 
+env({ path: process.env.DOTENV_CONFIG_PATH });
 sass.compiler = require('sass');
 
 module.exports = function () {

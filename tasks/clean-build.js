@@ -12,13 +12,11 @@ module.exports = function () {
     dot: true,
   };
 
-  const devFolders = [
+  const delFolders = [
     `../${global.folder.build}/css/**`,
     `../${global.folder.build}/js/**`,
     `../${global.folder.build}/**/*.html`,
   ];
-  const buildFolders = process.env.NODE_ENV === 'production' ? [] : [];
-  const delFolders = [...devFolders, ...buildFolders];
 
   return async () => {
     const deletedPaths = await del(delFolders, config);
