@@ -47,7 +47,7 @@
     "gulp-postcss": "9.0.0",
     "gulp-sass": "4.1.0",
     "htmlhint-stylish": "1.0.3",
-    "husky": "^5.0.8",
+    "husky": "^4.3.8",
     "lint-staged": "^10.5.4",
     "node-notifier": "9.0.0",
     "postcss": "8.2.5",
