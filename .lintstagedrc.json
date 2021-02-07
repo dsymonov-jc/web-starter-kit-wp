@@ -1,4 +1,5 @@
 {
   "**/*": ["npx prettier --write --ignore-unknown"],
+  "../public/**/*.html": ["npx htmlhint"],
   "js/**/*.js": ["npx eslint --fix"]
 }
