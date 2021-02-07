@@ -1,4 +1,4 @@
-# configs and main entry
+# configs
 .env*
 !.env*.example
 
@@ -47,3 +47,6 @@ tmp
 #npm dependencies
 /node_modules/
 package-lock.json
+
+# cache
+.stylelintcache

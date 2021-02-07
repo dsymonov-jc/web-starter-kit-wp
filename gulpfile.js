@@ -32,6 +32,7 @@ const loadEnv = require('./tasks/load-env');
 const cleanBuild = require('./tasks/clean-build');
 const lintHtml = require('./tasks/lint-html');
 const buildHtml = require('./tasks/build-html');
+const lintStyles = require('./tasks/lint-styles');
 const buildStyles = require('./tasks/build-styles');
 const buildStylesCustom = require('./tasks/build-styles-custom');
 const buildStylesVendors = require('./tasks/build-styles-vendors');
@@ -57,6 +58,11 @@ gulp.task('lint-html', lintHtml());
  * Template HTML
  */
 gulp.task('build-html', buildHtml());
+
+/**
+ * Lint styles
+ */
+gulp.task('lint-styles', lintStyles());
 
 /**
  * Build styles for application
@@ -101,6 +107,7 @@ gulp.task(
   gulp.series(
     'clean-build',
     'lint-js',
+    'lint-styles',
     gulp.parallel(
       gulp.series('build-html', 'lint-html'),
       gulp.series('build-styles', 'build-styles-custom', 'build-styles-vendors'),
@@ -118,6 +125,7 @@ gulp.task(
   gulp.series(
     'clean-build',
     'lint-js',
+    'lint-styles',
     gulp.parallel(
       gulp.series('build-html', 'lint-html'),
       gulp.series('build-styles', 'build-styles-custom', 'build-styles-vendors'),
