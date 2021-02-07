@@ -13,13 +13,13 @@ const global = require('../gulp-config.js');
 sass.compiler = require('sass');
 
 module.exports = function () {
-  const plugins = [
-    cssimport(),
-  ];
+  const plugins = [cssimport()];
 
-  return (done) => gulp.src(`./vendor_entries/${global.file.styles.vendor}.scss`)
-    .pipe(sass.sync())
-    .on('error', (error) => notifier.error(error.message, 'Vendor Sass compiling error', done))
-    .pipe(postcss(plugins))
-    .pipe(gulp.dest(`../${global.folder.build}/css`));
+  return (done) =>
+    gulp
+      .src(`./vendor_entries/${global.file.styles.vendor}.scss`)
+      .pipe(sass.sync())
+      .on('error', (error) => notifier.error(error.message, 'Vendor Sass compiling error', done))
+      .pipe(postcss(plugins))
+      .pipe(gulp.dest(`../${global.folder.build}/css`));
 };

@@ -10,14 +10,19 @@ const global = require('../gulp-config.js');
 
 module.exports = function () {
   return (done) => {
-    gulp.src(`../${global.folder.build}/**/*.html`)
-      .pipe(htmlhint({
-        'attr-lowercase': false,
-      }))
+    gulp
+      .src(`../${global.folder.build}/**/*.html`)
+      .pipe(
+        htmlhint({
+          'attr-lowercase': false,
+        })
+      )
       .pipe(htmlhint.reporter('htmlhint-stylish'))
-      .pipe(htmlhint.failOnError({
-        suppress: true,
-      }))
+      .pipe(
+        htmlhint.failOnError({
+          suppress: true,
+        })
+      )
       .on('error', (error) => notifier.error(error.message, 'HTML linting error', done));
 
     return done();

@@ -1,16 +1,7 @@
 {
-  "extends": [
-    "stylelint-config-recommended"
-  ],
-  "ignoreFiles": [
-    "node_modules/**/*.scss",
-    "vendor_entries/**/*.scss",
-    "**/*.css"
-  ],
-  "plugins": [
-    "stylelint-scss",
-    "stylelint-order"
-  ],
+  "extends": ["stylelint-config-recommended"],
+  "ignoreFiles": ["node_modules/**/*.scss", "vendor_entries/**/*.scss", "**/*.css"],
+  "plugins": ["stylelint-scss", "stylelint-order"],
   "reporters": [
     {
       "formatter": "string",

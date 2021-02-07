@@ -10,12 +10,12 @@ module.exports = function (options) {
   return () => {
     gulp.watch(
       ['./html/**/*.njk', './html/**/*.html'],
-      gulp.series(global.task.buildHtml, global.task.lintHtml),
+      gulp.series(global.task.buildHtml, global.task.lintHtml)
     );
 
     gulp.watch(
       ['./scss/**/*.scss', '!./scss/custom/**/*.scss'],
-      gulp.series(global.task.buildStyles),
+      gulp.series(global.task.buildStyles)
     );
 
     gulp.watch('./scss/custom/**/*.scss', gulp.series(global.task.buildStylesCustom));

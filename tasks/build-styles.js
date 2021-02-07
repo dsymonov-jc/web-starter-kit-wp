@@ -15,17 +15,17 @@ sass.compiler = require('sass');
 
 module.exports = function () {
   const production = global.isProduction();
-  const plugins = [
-    autoprefixer(),
-  ];
+  const plugins = [autoprefixer()];
 
   if (production) {
     plugins.push(sortMedia({ sort: global.buildStyles.sortType }));
   }
 
-  return (done) => gulp.src('./scss/*.scss', { sourcemaps: !production })
-    .pipe(sass.sync({ sourceMap: !production }))
-    .on('error', (error) => notifier.error(error.message, 'Main Sass compiling error', done))
-    .pipe(postcss(plugins))
-    .pipe(gulp.dest(`../${global.folder.build}/css`, { sourcemaps: './' }));
+  return (done) =>
+    gulp
+      .src('./scss/*.scss', { sourcemaps: !production })
+      .pipe(sass.sync({ sourceMap: !production }))
+      .on('error', (error) => notifier.error(error.message, 'Main Sass compiling error', done))
+      .pipe(postcss(plugins))
+      .pipe(gulp.dest(`../${global.folder.build}/css`, { sourcemaps: './' }));
 };

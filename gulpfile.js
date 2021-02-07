@@ -98,47 +98,40 @@ gulp.task(global.task.watch, watch({ browserSyncInstance }));
 /**
  * Develop mode - with browser sync, file watch & live reload
  */
-gulp.task('default', gulp.series(
-  global.task.cleanBuild,
-  global.task.lintJs,
-  gulp.parallel(
-    gulp.series(
-      global.task.buildHtml,
-      global.task.lintHtml,
+gulp.task(
+  'default',
+  gulp.series(
+    global.task.cleanBuild,
+    global.task.lintJs,
+    gulp.parallel(
+      gulp.series(global.task.buildHtml, global.task.lintHtml),
+      gulp.series(
+        global.task.buildStyles,
+        global.task.buildStylesCustom,
+        global.task.buildStylesVendors
+      ),
+      gulp.series(global.task.buildJs)
     ),
-    gulp.series(
-      global.task.buildStyles,
-      global.task.buildStylesCustom,
-      global.task.buildStylesVendors,
-    ),
-    gulp.series(
-      global.task.buildJs,
-    ),
-  ),
-  gulp.parallel(
-    global.task.browserSync,
-    global.task.watch,
-  ),
-));
+    gulp.parallel(global.task.browserSync, global.task.watch)
+  )
+);
 
 /**
  * Production mode - creating production folder without unnecessary files
  */
-gulp.task(global.task.build, gulp.series(
-  global.task.cleanBuild,
-  global.task.lintJs,
-  gulp.parallel(
-    gulp.series(
-      global.task.buildHtml,
-      global.task.lintHtml,
-    ),
-    gulp.series(
-      global.task.buildStyles,
-      global.task.buildStylesCustom,
-      global.task.buildStylesVendors,
-    ),
-    gulp.series(
-      global.task.buildJs,
-    ),
-  ),
-));
+gulp.task(
+  global.task.build,
+  gulp.series(
+    global.task.cleanBuild,
+    global.task.lintJs,
+    gulp.parallel(
+      gulp.series(global.task.buildHtml, global.task.lintHtml),
+      gulp.series(
+        global.task.buildStyles,
+        global.task.buildStylesCustom,
+        global.task.buildStylesVendors
+      ),
+      gulp.series(global.task.buildJs)
+    )
+  )
+);

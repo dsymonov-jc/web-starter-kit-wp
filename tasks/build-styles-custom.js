@@ -16,17 +16,17 @@ sass.compiler = require('sass');
 module.exports = function () {
   const production = global.isProduction();
   const { isSortMedia } = global.buildStyles.custom.isSortMedia;
-  const plugins = [
-    autoprefixer(),
-  ];
+  const plugins = [autoprefixer()];
 
   if (isSortMedia) {
     plugins.push(sortMedia({ sort: global.buildStyles.sortType }));
   }
 
-  return (done) => gulp.src('./scss/custom/*.scss', { sourcemaps: !production })
-    .pipe(sass.sync({ sourceMap: !production }))
-    .on('error', (error) => notifier.error(error.message, 'Custom Sass compiling error', done))
-    .pipe(postcss(plugins))
-    .pipe(gulp.dest(`../${global.folder.build}/css`, { sourcemaps: './' }));
+  return (done) =>
+    gulp
+      .src('./scss/custom/*.scss', { sourcemaps: !production })
+      .pipe(sass.sync({ sourceMap: !production }))
+      .on('error', (error) => notifier.error(error.message, 'Custom Sass compiling error', done))
+      .pipe(postcss(plugins))
+      .pipe(gulp.dest(`../${global.folder.build}/css`, { sourcemaps: './' }));
 };

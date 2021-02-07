@@ -19,10 +19,7 @@ module.exports = function () {
     `../${global.folder.build}/**/*.html`,
   ];
   const buildFolders = production ? [] : [];
-  const delFolders = [
-    ...devFolders,
-    ...buildFolders,
-  ];
+  const delFolders = [...devFolders, ...buildFolders];
 
   return async () => {
     const deletedPaths = await del(delFolders, config);

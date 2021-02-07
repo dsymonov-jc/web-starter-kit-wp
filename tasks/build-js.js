@@ -61,7 +61,7 @@ module.exports = function () {
               hash: false,
               chunks: false,
               colors: true,
-            }),
+            })
           );
         }
 
