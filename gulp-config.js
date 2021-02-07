@@ -1,7 +1,6 @@
 const global = {
   folder: {
     tasks: 'tasks',
-    // dev: 'develop',
     build: 'public',
   },
   file: {

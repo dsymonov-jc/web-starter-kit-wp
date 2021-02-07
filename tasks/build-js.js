@@ -2,12 +2,14 @@
  * Build js
  */
 
-require('dotenv').config();
+const env = require('../helpers/env');
 const webpack = require('webpack');
 const path = require('path');
 
 const notifier = require('../helpers/notifier');
 const global = require('../gulp-config.js');
+
+env({ path: process.env.DOTENV_CONFIG_PATH });
 
 module.exports = function () {
   return (done) => {

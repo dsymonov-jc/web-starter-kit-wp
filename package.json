@@ -66,17 +66,18 @@
     "webpack": "5.21.1"
   },
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=12.0.0"
   },
   "scripts": {
-    "postinstall": "npx gulp dotenv-init",
+    "postinstall": "npx gulp load-env",
     "format": "npx prettier . --write --ignore-unknown",
     "pre-commit": "npx lint-staged -r",
     "dev": "npx gulp",
     "test": "npx gulp build --log-level -LLLL",
     "build": "cross-env NODE_ENV=production npx gulp build",
     "lint-html": "npx gulp lint-html",
-    "lint-js": "npx gulp lint-js"
+    "lint-js": "npx gulp lint-js",
+    "fix-js": "cross-env LINT_MODE=fix npx gulp lint-js"
   },
   "dependencies": {
     "normalize.css": "8.0.1"

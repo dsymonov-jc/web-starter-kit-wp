@@ -1,8 +1,10 @@
 /**
  * Lint JavaScript files
  */
-
+const env = require('../helpers/env');
 const { ESLint } = require('eslint');
+
+env({ path: process.env.DOTENV_CONFIG_PATH });
 
 module.exports = function () {
   const eslint = new ESLint({

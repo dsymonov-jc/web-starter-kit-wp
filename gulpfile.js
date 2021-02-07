@@ -27,10 +27,8 @@ require('dotenv').config();
 const gulp = require('gulp');
 const browserSyncInstance = require('browser-sync').create();
 
-const global = require('./gulp-config.js');
-
 // Tasks modules
-const dotEnvInit = require('./tasks/dotenv-init');
+const loadEnv = require('./tasks/load-env');
 const cleanBuild = require('./tasks/clean-build');
 const lintHtml = require('./tasks/lint-html');
 const buildHtml = require('./tasks/build-html');
@@ -45,7 +43,7 @@ const watch = require('./tasks/watch');
 /**
  * Initialize .env files
  */
-gulp.task('dotenv-init', dotEnvInit());
+gulp.task('load-env', loadEnv());
 /**
  * Clean build folders
  */

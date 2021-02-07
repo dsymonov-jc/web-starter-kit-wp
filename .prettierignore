@@ -1,6 +1,6 @@
 # configs and main entry
 .env*
-!.env.example
+!.env*.example
 
 # caches
 Thumbs.db

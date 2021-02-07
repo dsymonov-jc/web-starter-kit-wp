@@ -1,7 +1,6 @@
 /**
- * Initialize .env files
+ * Load .env files
  */
-
 
 const gulp = require('gulp');
 const rename = require('gulp-rename');
@@ -9,7 +8,7 @@ const rename = require('gulp-rename');
 module.exports = function () {
   return () =>
     gulp
-      .src('./.env*.example')
+      .src('.env*.example')
       .pipe(
         rename((path) => {
           return {
