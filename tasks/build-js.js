@@ -2,6 +2,7 @@
  * Build js
  */
 
+require('dotenv').config();
 const webpack = require('webpack');
 const path = require('path');
 
@@ -9,8 +10,6 @@ const notifier = require('../helpers/notifier');
 const global = require('../gulp-config.js');
 
 module.exports = function () {
-  const production = global.isProduction();
-
   return (done) => {
     try {
       const config = {
@@ -33,7 +32,7 @@ module.exports = function () {
               },
             },
           },
-          minimize: false,
+          minimize: process.env.NODE_ENV === 'production',
         },
         module: {
           rules: [
@@ -54,7 +53,7 @@ module.exports = function () {
           throw new Error(error);
         }
 
-        if (production) {
+        if (process.env.NODE_ENV === 'production') {
           console.log(
             stats.toString({
               version: false,

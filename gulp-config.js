@@ -1,19 +1,4 @@
 const global = {
-  task: {
-    lintHtml: 'lint-html',
-    lintJs: 'lint-js',
-    fixJs: 'fix-js',
-    buildHtml: 'build-html',
-    buildJs: 'build-js',
-    buildStyles: 'build-styles',
-    buildStylesCustom: 'build-styles-custom',
-    buildStylesVendors: 'build-styles-vendors',
-    buildImages: 'build-images',
-    cleanBuild: 'clean-build',
-    browserSync: 'browser-sync',
-    watch: 'watch',
-    build: 'build',
-  },
   folder: {
     tasks: 'tasks',
     // dev: 'develop',
@@ -58,12 +43,6 @@ const global = {
     title: '< SYSTEM ERROR >',
     icon: './system_files/icons/error_icon.png',
     wait: true,
-  },
-  isProduction() {
-    return process.argv[process.argv.length - 1] === this.task.build;
-  },
-  isFixJs() {
-    return process.argv[process.argv.length - 1] === this.task.fixJs;
   },
 };
 

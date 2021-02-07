@@ -12,13 +12,12 @@ module.exports = function () {
     dot: true,
   };
 
-  const production = global.isProduction();
   const devFolders = [
     `../${global.folder.build}/css/**`,
     `../${global.folder.build}/js/**`,
     `../${global.folder.build}/**/*.html`,
   ];
-  const buildFolders = production ? [] : [];
+  const buildFolders = process.env.NODE_ENV === 'production' ? [] : [];
   const delFolders = [...devFolders, ...buildFolders];
 
   return async () => {

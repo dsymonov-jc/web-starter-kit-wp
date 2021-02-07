@@ -8,23 +8,17 @@ const global = require('../gulp-config.js');
 
 module.exports = function (options) {
   return () => {
-    gulp.watch(
-      ['./html/**/*.njk', './html/**/*.html'],
-      gulp.series(global.task.buildHtml, global.task.lintHtml)
-    );
+    gulp.watch(['./html/**/*.njk', './html/**/*.html'], gulp.series('build-html', 'lint-html'));
 
-    gulp.watch(
-      ['./scss/**/*.scss', '!./scss/custom/**/*.scss'],
-      gulp.series(global.task.buildStyles)
-    );
+    gulp.watch(['./scss/**/*.scss', '!./scss/custom/**/*.scss'], gulp.series('build-styles'));
 
-    gulp.watch('./scss/custom/**/*.scss', gulp.series(global.task.buildStylesCustom));
+    gulp.watch('./scss/custom/**/*.scss', gulp.series('build-styles-custom'));
 
-    gulp.watch('./js/**/*.js', gulp.series(global.task.lintJs, global.task.buildJs));
+    gulp.watch('./js/**/*.js', gulp.series('lint-js', 'build-js'));
 
-    gulp.watch('./vendor_entries/**/*.js', gulp.series(global.task.buildJs));
+    gulp.watch('./vendor_entries/**/*.js', gulp.series('build-js'));
 
-    gulp.watch('./vendor_entries/**/*.scss', gulp.series(global.task.buildStylesVendors));
+    gulp.watch('./vendor_entries/**/*.scss', gulp.series('build-styles-vendors'));
 
     gulp
       .watch([`../${global.folder.build}/**/*`, `!../${global.folder.build}/**/*.map`])
