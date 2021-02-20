@@ -48,6 +48,11 @@ module.exports = function () {
           ],
         },
         externals: global.buildJs.externalLibs,
+        plugins: [
+          new webpack.DefinePlugin({
+            'process.env': JSON.stringify(process.env),
+          }),
+        ],
       };
 
       webpack(config, (error, stats) => {
